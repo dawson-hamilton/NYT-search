@@ -2,12 +2,18 @@ function buildQueryUrl() {
     var searchTerm = $("#search-term").val().trim();
     console.log(searchTerm);
     var startYear = $("#start-year").val().trim();
+    if (parseInt(startYear)) {
+        startYear = startYear + "0101";
+    }
     console.log(startYear);
     var endYear = $("#end-year").val().trim();
+    if (parseInt(endYear)) {
+        endYear = endYear + "0101";
+    }
     console.log(endYear);
     var apiKey = "rKwNj5dE97ykNAlHp4AO4vsbEFhuAHRc"
     var nytimes = "https://api.nytimes.com/svc/search/v2/articlesearch.json?"
-    var url = nytimes + "q=" + searchTerm + "&begin_date=" + startYear + "&end_date" + endYear + "&api-key=" + apiKey;
+    var url = nytimes + "q=" + searchTerm + "&begin_date=" + startYear + "&end_date=" + endYear + "&api-key=" + apiKey;
     console.log(url);
     return url;
 }
